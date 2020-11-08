@@ -22,8 +22,7 @@ namespace ProductReviewManagement
         static void Main(string[] args)
         {
             Console.WriteLine(" Welcome to Product Review Management System");
-
-          
+      
             List<ProductReview> productReviewList = new List<ProductReview>()
             {
                new ProductReview(){productId=1,userId=1,rating=1,review="Low",isLike=true},
@@ -43,6 +42,10 @@ namespace ProductReviewManagement
             {
                 Console.WriteLine($"ProductId : {productReview.productId}, UserId : {productReview.userId}, Rating : {productReview.rating}, Review : {productReview.review}, isLike :{productReview.isLike}");
             }
+
+            ProductManagement productManagement = new ProductManagement();
+            Console.WriteLine(); ;
+            productManagement.CountForProductId(productReviewList);
         }
     }
 }
