@@ -61,23 +61,23 @@ namespace ProductReviewManagement
             var records = (list.GroupBy(p => p.productId).Select(x => new { ProductId = x.Key, Count = x.Count() }));
             foreach (var record in records)
             {
-                Console.WriteLine("ProductId : " + record.ProductId +"  Count : "+record.Count );
+                Console.WriteLine("ProductId : " + record.ProductId + "  Count : " + record.Count);
             }
         }
 
         /// <summary>
-        /// Retrievin gProductId And Review
-        /// UC5
+        /// Retrievin ProductId And Review
+        /// UC5,UC7(same as UC5)
         /// </summary>
         /// <param name="list"></param>
         public void RetrievingProductIdAndReview(List<ProductReview> list)
         {
             Console.WriteLine("Retrieving Product and Review from List");
             var records = (from product in list
-                           select (product.productId , product.review));
+                           select (product.productId, product.review));
             foreach (var record in records)
             {
-                Console.WriteLine("ProductId : " + record.productId + "  Review :"+record.review );
+                Console.WriteLine("ProductId : " + record.productId + "  Review :" + record.review);
             }
         }
 
@@ -97,6 +97,28 @@ namespace ProductReviewManagement
             }
         }
 
+        /// <summary>
+        /// Creating DataTable
+        /// UC8
+        /// </summary>
+        public void AddDataTable()
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("productId");
+            table.Columns.Add("userId");
+            table.Columns.Add("rating");
+            table.Columns.Add("review");
+            table.Columns.Add("isLike");
+
+            table.Rows.Add(101,1,1,"Low",true);
+            table.Rows.Add(201, 2, 2, "Low", true);
+            table.Rows.Add(301, 3, 6, "Good", true);
+            table.Rows.Add(401, 4, 5, "Good", true);
+            table.Rows.Add(501, 5, 4, "Average", true);
+            table.Rows.Add(201, 6, 3, "Average", true);
+            table.Rows.Add(301, 7, 6, "Good", true);
+            table.Rows.Add(501, 8, 4, "Average", true);
+        }
     }
 }
 
