@@ -80,6 +80,23 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductId : " + record.productId + "  Review :"+record.review );
             }
         }
+
+        /// <summary>
+        /// Skipping Top Five
+        /// UC6
+        /// </summary>
+        /// <param name="list"></param>
+        public void SkipTopFive(List<ProductReview> list)
+        {
+            Console.WriteLine("Skipping Top Five");
+            var records = (from product in list
+                           select (product)).Skip(5);
+            foreach (var record in records)
+            {
+                Console.WriteLine($"ProductId : {record.productId}, UserId : {record.userId}, Rating : {record.rating}, Review : {record.review}, isLike :{record.isLike}");
+            }
+        }
+
     }
 }
 

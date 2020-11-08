@@ -45,7 +45,7 @@ namespace ProductReviewManagement
 
             ProductManagement productManagement = new ProductManagement();
             Console.WriteLine(); ;
-            productManagement.RetrievingProductIdAndReview(productReviewList);
+            productManagement.SkipTopFive(productReviewList);
         }
     }
 }
