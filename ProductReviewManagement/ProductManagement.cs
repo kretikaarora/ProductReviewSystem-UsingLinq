@@ -120,8 +120,14 @@ namespace ProductReviewManagement
             table.Rows.Add("301", "7", "6", "Good", "true");
             table.Rows.Add("501", "8", "4", "Average", "true");
             DisplayDataTable(table);
+            FindingAverageRatingForEachUserId(table);
         }
 
+        /// <summary>
+        /// Retrieving all the contacts from data table
+        /// uc9
+        /// </summary>
+        /// <param name="table"></param>
         public void DisplayDataTable(DataTable table)
         {
             var records = table.AsEnumerable().Where(r => r.Field<string>("isLike") == "true");
@@ -133,6 +139,20 @@ namespace ProductReviewManagement
                             
         }
 
+        /// <summary>
+        ///  Finding Average Rating For Each User Id
+        ///  Uc10
+        /// </summary>
+        /// <param name="table"></param>
+        public void FindingAverageRatingForEachUserId(DataTable table)
+        {
+            Console.WriteLine("The Average ratings for each user id are ");
+            var records = table.AsEnumerable().GroupBy(r => r.Field<string>("productId")).Select(r => new { ProductId= r.Key , Average = r.Average(z=> Convert.ToInt32(z.Field<string>("rating")))});
+            foreach (var record in records)
+            {
+                Console.WriteLine("ProductId :" + record.ProductId +" Average : "+record.Average );
+            }
+        }
     }
 }
 
