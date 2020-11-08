@@ -113,16 +113,17 @@ namespace ProductReviewManagement
             table.Columns.Add("review");
             table.Columns.Add("isLike");
 
-            table.Rows.Add("101","1","1","Low","true");
+            table.Rows.Add("101","1","1","Low ","true");
             table.Rows.Add("201", "2", "2", "Low", "true");
             table.Rows.Add("301", "3", "6", "Good", "true");
-            table.Rows.Add("401", "4", "5", "Good", "false");
+            table.Rows.Add("401", "4", "5", "nice", "false");
             table.Rows.Add("501", "5", "4", "Average", "true");
-            table.Rows.Add("201", "6", "3", "Average", "true");
-            table.Rows.Add("301", "7", "6", "Good", "true");
+            table.Rows.Add("201", "6", "3", "Average nice", "true");
+            table.Rows.Add("301", "7", "6", "nice Good", "true");
             table.Rows.Add("501", "8", "4", "Average", "true");
             DisplayDataTable(table);
             FindingAverageRatingForEachUserId(table);
+            FindingRecordsThatContainNiceInReview(table);
         }
 
         /// <summary>
@@ -146,6 +147,7 @@ namespace ProductReviewManagement
         /// <param name="table"></param>
         public void FindingAverageRatingForEachUserId(DataTable table)
         {
+            Console.WriteLine();
             Console.WriteLine("The Average ratings for each user id are ");
             var records = table.AsEnumerable().GroupBy(r => r.Field<string>("productId")).Select(r => new { ProductId= r.Key , Average = r.Average(z=> Convert.ToInt32(z.Field<string>("rating")))});
             foreach (var record in records)
@@ -153,6 +155,19 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductId :" + record.ProductId +" Average : "+record.Average );
             }
         }
+
+        public void FindingRecordsThatContainNiceInReview(DataTable table)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Finding Records That Contain Nice in Review");
+            var records = table.AsEnumerable().Where(r => r.Field<string>("review").Contains("nice"));          
+            foreach (var record in records)
+            {
+                Console.WriteLine($"ProductId : {record.Field<string>("productId")}, UserId : {record.Field<string>("userId")}, Rating : {record.Field<string>("rating").ToString()}, Review : {record.Field<string>("review")}, isLike :{record.Field<string>("isLike").ToString()}");
+            }
+
+        }
+
     }
 }
 
