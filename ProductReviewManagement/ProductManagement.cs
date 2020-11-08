@@ -52,9 +52,11 @@ namespace ProductReviewManagement
         public void CountForProductId(List<ProductReview> list)
         {
             var records = (list.GroupBy(p => p.productId).Select(x => new { ProductId = x.Key, Count = x.Count() }));
+            Console.WriteLine("Group by ProductId");
+            Console.WriteLine();
             foreach (var record in records)
             {
-                Console.WriteLine("ProductId : " + record.ProductId +"Count : "+record.Count );
+                Console.WriteLine("ProductId : " + record.ProductId +"  Count : "+record.Count );
             }
 
         }
