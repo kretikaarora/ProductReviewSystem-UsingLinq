@@ -42,10 +42,11 @@ namespace ProductReviewManagement
             {
                 Console.WriteLine($"ProductId : {productReview.productId}, UserId : {productReview.userId}, Rating : {productReview.rating}, Review : {productReview.review}, isLike :{productReview.isLike}");
             }
-
             ProductManagement productManagement = new ProductManagement();
-            Console.WriteLine(); ;
+
+            Console.WriteLine(); 
             productManagement.AddDataTable();
+
         }
     }
 }

@@ -20,7 +20,9 @@ namespace ProductReviewManagement
         /// <param name="list"></param>
         public void TopRecords(List<ProductReview> list)
         {
+
             var records = (from product in list
+
                            orderby product.rating descending
                            select product).Take(3);
             Console.WriteLine();
@@ -47,6 +49,7 @@ namespace ProductReviewManagement
             {
                 Console.WriteLine($"ProductId : {record.productId}, UserId : {record.userId}, Rating : {record.rating}, Review : {record.review}, isLike :{record.isLike}");
             }
+
         }
 
         /// <summary>
@@ -63,7 +66,6 @@ namespace ProductReviewManagement
             {
                 Console.WriteLine("ProductId : " + record.ProductId + "  Count : " + record.Count);
             }
-            
         }
 
         /// <summary>
@@ -129,12 +131,11 @@ namespace ProductReviewManagement
             foreach(var record in records)
             {               
              Console.WriteLine($"ProductId : {record.Field<string>("productId")}, UserId : {record.Field<string>("userId")}, Rating : {record.Field<string>("rating").ToString()}, Review : {record.Field<string>("review")}, isLike :{record.Field<string>("isLike").ToString()}");
-            }
-                            
+            }                            
         }
-
     }
 }
+
 
 
 
