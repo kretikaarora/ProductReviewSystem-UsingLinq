@@ -1,5 +1,7 @@
+
 ﻿
 using System;
+
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -16,6 +18,7 @@ namespace ProductReviewManagement
         public void TopRecords(List<ProductReview> list)
         {
             var records = (from product in list 
+
                            orderby product.rating descending
                            select product).Take(3);
             Console.WriteLine();
@@ -42,10 +45,10 @@ namespace ProductReviewManagement
             {
                Console.WriteLine($"ProductId : {record.productId}, UserId : {record.userId}, Rating : {record.rating}, Review : {record.review}, isLike :{record.isLike}");
             }
-        }
-         
+        }         
+   }
 }
-}
+
 
 
 
