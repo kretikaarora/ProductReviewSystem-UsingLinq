@@ -1,4 +1,9 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ProductManagement.cs" company="Capgemini">
+//   Copyright © 2018 Company
+// </copyright>
+// <creator Name="Kretika Arora"/>
+// --------------------------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -51,14 +56,29 @@ namespace ProductReviewManagement
         /// <param name="list"></param>
         public void CountForProductId(List<ProductReview> list)
         {
-            var records = (list.GroupBy(p => p.productId).Select(x => new { ProductId = x.Key, Count = x.Count() }));
             Console.WriteLine("Group by ProductId");
             Console.WriteLine();
+            var records = (list.GroupBy(p => p.productId).Select(x => new { ProductId = x.Key, Count = x.Count() }));
             foreach (var record in records)
             {
                 Console.WriteLine("ProductId : " + record.ProductId +"  Count : "+record.Count );
             }
+        }
 
+        /// <summary>
+        /// Retrievin gProductId And Review
+        /// UC5
+        /// </summary>
+        /// <param name="list"></param>
+        public void RetrievingProductIdAndReview(List<ProductReview> list)
+        {
+            Console.WriteLine("Retrieving Product and Review from List");
+            var records = (from product in list
+                           select (product.productId , product.review));
+            foreach (var record in records)
+            {
+                Console.WriteLine("ProductId : " + record.productId + "  Review :"+record.review );
+            }
         }
     }
 }
