@@ -22,8 +22,7 @@ namespace ProductReviewManagement
         static void Main(string[] args)
         {
             Console.WriteLine(" Welcome to Product Review Management System");
-
-          
+      
             List<ProductReview> productReviewList = new List<ProductReview>()
             {
                new ProductReview(){productId=1,userId=1,rating=1,review="Low",isLike=true},
@@ -32,11 +31,11 @@ namespace ProductReviewManagement
                new ProductReview(){productId=4,userId=4,rating=4,review="Average",isLike=true},
                new ProductReview(){productId=5,userId=5,rating=5,review="Good",isLike=true},
                new ProductReview(){productId=6,userId=6,rating=6,review="Good",isLike=true},
-               new ProductReview(){productId=7,userId=7,rating=1,review="Low",isLike=true},
-               new ProductReview(){productId=8,userId=8,rating=2,review="Low",isLike=true},
-               new ProductReview(){productId=9,userId=9,rating=3,review="Average",isLike=true},
-               new ProductReview(){productId=10,userId=10,rating=4,review="Good",isLike=true},
-               new ProductReview(){productId=11,userId=11,rating=5,review="Good",isLike=true},
+               new ProductReview(){productId=1,userId=7,rating=1,review="Low",isLike=true},
+               new ProductReview(){productId=1,userId=8,rating=2,review="Low",isLike=true},
+               new ProductReview(){productId=2,userId=9,rating=3,review="Average",isLike=true},
+               new ProductReview(){productId=5,userId=10,rating=4,review="Good",isLike=true},
+               new ProductReview(){productId=6,userId=11,rating=5,review="Good",isLike=true},
             };
 
             foreach(var productReview in productReviewList)
@@ -44,7 +43,8 @@ namespace ProductReviewManagement
                 Console.WriteLine($"ProductId : {productReview.productId}, UserId : {productReview.userId}, Rating : {productReview.rating}, Review : {productReview.review}, isLike :{productReview.isLike}");
             }
             ProductManagement productManagement = new ProductManagement();
-            productManagement.TopRecords(productReviewList);
+            Console.WriteLine(); ;
+            productManagement.CountForProductId(productReviewList);
 
         }
     }
