@@ -44,8 +44,8 @@ namespace ProductReviewManagement
             }
             ProductManagement productManagement = new ProductManagement();
 
-            Console.WriteLine(); ;
-            productManagement.SkipTopFive(productReviewList);
+            Console.WriteLine(); 
+            productManagement.AddDataTable();
 
         }
     }
